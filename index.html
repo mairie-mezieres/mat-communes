@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MAT · entraide entre communes — répliquer l’application de Mézières-lez-Cléry</title>
+<meta name="description" content="MAT, l’application municipale de Mézières-lez-Cléry (Territoria d’Or 2026), est libre : ce site aide les communes à la reprendre, avec une FAQ, un guide pas à pas et un espace d’entraide.">
+<meta name="theme-color" content="#1A3D2B">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/site.css">
+<script src="assets/js/commun.js" defer></script>
+<script src="assets/js/accueil.js" defer></script>
+</head>
+<body>
+<a class="evitement" href="#contenu">Aller au contenu</a>
+<header class="entete">
+  <div class="conteneur">
+    <div class="entete-haut">
+      <a class="marque" href="index.html"><span class="marque-logo" aria-hidden="true">MAT</span><span>MAT · entraide <span class="marque-sous">entre communes</span></span></a>
+    </div>
+    <nav class="nav-principale" aria-label="Menu principal">
+      <ul>
+        <li><a href="index.html" aria-current="page">Accueil</a></li>
+        <li><a href="guide.html">Répliquer MAT</a></li>
+        <li><a href="faq.html">Questions fréquentes</a></li>
+        <li><a href="entraide.html">Entraide</a></li>
+        <li><a href="webinaire.html">Webinaire</a></li>
+        <li><a href="rejoindre.html">Nous rejoindre</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="contenu" tabindex="-1">
+  <section class="bandeau" aria-labelledby="titre-accueil">
+    <svg class="bandeau-deco" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
+      <g fill="none" stroke="#F5F1E8" stroke-width="6" stroke-linecap="round">
+        <path d="M100 185 C 40 165 18 110 30 45"/>
+        <path d="M100 185 C 160 165 182 110 170 45"/>
+      </g>
+      <g fill="#F5F1E8">
+        <ellipse cx="34" cy="70" rx="9" ry="18" transform="rotate(-25 34 70)"/>
+        <ellipse cx="40" cy="105" rx="9" ry="18" transform="rotate(-40 40 105)"/>
+        <ellipse cx="56" cy="138" rx="9" ry="18" transform="rotate(-55 56 138)"/>
+        <ellipse cx="166" cy="70" rx="9" ry="18" transform="rotate(25 166 70)"/>
+        <ellipse cx="160" cy="105" rx="9" ry="18" transform="rotate(40 160 105)"/>
+        <ellipse cx="144" cy="138" rx="9" ry="18" transform="rotate(55 144 138)"/>
+      </g>
+    </svg>
+    <div class="conteneur bandeau-grille">
+      <div>
+        <p class="badge-territoria"><span class="badge-ico" aria-hidden="true">🏆</span><span>Territoria d’Or 2026</span></p>
+        <h1 id="titre-accueil" class="anime-entree">Un village a créé son application. Votre commune peut l’avoir aussi.</h1>
+        <p class="chapo anime-entree anime-entree-2">MAT — « Mézières Avec Toi » — est l’application municipale de Mézières-lez-Cléry, dans le Loiret. Son code est libre : toute commune peut la reprendre, sans payer de licence. Ce site vous aide à le faire, et à ne pas le faire seul.</p>
+        <div class="boutons anime-entree anime-entree-3">
+          <a class="bouton bouton-vif bouton-grand" href="guide.html">Répliquer MAT</a>
+          <a class="bouton bouton-clair bouton-grand" href="faq.html">Poser une question</a>
+        </div>
+      </div>
+      <figure class="emplacement est-masque" data-fichier="assets/img/mat-et-mel.webp" data-alt="Mat et Mel, les deux mascottes de l’application MAT"></figure>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="titre-apport">
+    <div class="conteneur">
+      <h2 id="titre-apport" class="section-titre">Ce que MAT apporte aux habitants</h2>
+      <p class="chapo">Une seule application, installée sur le téléphone, qui rassemble ce que la mairie a à dire et ce que les habitants ont à lui dire.</p>
+      <ul class="grille grille-3 liste-nue">
+        <li class="carte lisere-communication">
+          <span class="icone" aria-hidden="true">📰</span>
+          <h3>Les actualités de la mairie</h3>
+          <p>Publiées une seule fois, sur Facebook et dans l’application, avec une notification sur le téléphone des habitants qui le souhaitent.</p>
+        </li>
+        <li class="carte lisere-travaux">
+          <span class="icone" aria-hidden="true">🚧</span>
+          <h3>Les signalements</h3>
+          <p>Un trou dans la chaussée, un lampadaire éteint : l’habitant le signale avec une photo, la mairie le suit et lui répond dans l’application.</p>
+        </li>
+        <li class="carte lisere-feuille">
+          <span class="icone" aria-hidden="true">💬</span>
+          <h3>MEL, l’assistante</h3>
+          <p>Elle répond à toute heure aux questions courantes sur les démarches, et renvoie vers la mairie quand elle ne sait pas.</p>
+        </li>
+        <li class="carte lisere-rouge">
+          <span class="icone" aria-hidden="true">⛈️</span>
+          <h3>Les alertes</h3>
+          <p>Vigilance météo, restrictions d’eau, jour de collecte des déchets : l’information arrive avant le problème.</p>
+        </li>
+        <li class="carte lisere-sauge">
+          <span class="icone" aria-hidden="true">♿</span>
+          <h3>Pour tous les habitants</h3>
+          <p>Gros caractères, contrastes renforcés, navigation au clavier : l’application a été auditée sur les 106 critères du référentiel d’accessibilité (RGAA).</p>
+        </li>
+        <li class="carte lisere-fetes">
+          <span class="icone" aria-hidden="true">📶</span>
+          <h3>Même sans réseau</h3>
+          <p>Elle s’installe sans passer par un magasin d’applications et reste consultable hors connexion. Aucun service de publicité ni de pistage.</p>
+        </li>
+      </ul>
+      <div class="boutons">
+        <a class="bouton bouton-clair" href="https://mezieres-lez-clery.fr/">Voir l’application de Mézières</a>
+      </div>
+      <figure class="emplacement est-masque" data-fichier="assets/img/capture-accueil-mat.webp" data-alt="L’écran d’accueil de l’application MAT sur un téléphone"></figure>
+    </div>
+  </section>
+
+  <section id="chiffres" class="section est-masque" aria-labelledby="titre-chiffres">
+    <div class="conteneur">
+      <h2 id="titre-chiffres">MAT en chiffres</h2>
+      <ul id="liste-chiffres" class="chiffres"></ul>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="titre-fierte">
+    <div class="conteneur grille grille-2">
+      <div>
+        <h2 id="titre-fierte">Une fierté de village, à partager</h2>
+        <p>MAT n’a pas été commandée à une grande entreprise. Elle a été construite à Mézières-lez-Cléry, pas à pas, avec les habitants, les élus et les agents de la mairie.</p>
+        <p>Le Territoria d’Or 2026 récompense ce travail. Le meilleur usage de ce prix : que d’autres communes en profitent à leur tour.</p>
+      </div>
+      <div>
+        <figure class="emplacement est-masque" data-fichier="assets/img/commune-mezieres.webp" data-alt="Vue du village de Mézières-lez-Cléry"></figure>
+        <figure class="emplacement est-masque" data-fichier="assets/img/remise-territoria.webp" data-alt="Remise du Territoria d’Or 2026 à la commune de Mézières-lez-Cléry"></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="titre-avancer">
+    <div class="conteneur">
+      <h2 id="titre-avancer">Trois façons d’avancer</h2>
+      <ul class="grille grille-3 liste-nue">
+        <li class="carte lisere-communication">
+          <span class="icone" aria-hidden="true">❓</span>
+          <h3>Lire les réponses</h3>
+          <p>Les questions que posent toutes les communes au début, avec leur réponse.</p>
+          <p><a class="lien-fort" href="faq.html">Questions fréquentes</a></p>
+        </li>
+        <li class="carte lisere-feuille">
+          <span class="icone" aria-hidden="true">🤝</span>
+          <h3>Demander aux autres communes</h3>
+          <p>Un espace où les communes s’entraident : la réponse donnée à l’une sert à toutes.</p>
+          <p><a class="lien-fort" href="entraide.html">L’entraide</a></p>
+        </li>
+        <li class="carte lisere-fetes">
+          <span class="icone" aria-hidden="true">🎥</span>
+          <h3>Venir au webinaire</h3>
+          <p id="accueil-webinaire">Une fois par mois, en visio, pour poser vos questions de vive voix.</p>
+          <p><a class="lien-fort" href="webinaire.html">Le webinaire mensuel</a></p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="titre-rejoindre">
+    <div class="conteneur">
+      <div class="carte lisere-travaux">
+        <h2 id="titre-rejoindre">Votre commune veut MAT ?</h2>
+        <p>Dites-nous qui vous êtes et où vous en êtes : une commune qui a déjà fait le chemin pourra vous accompagner.</p>
+        <div class="boutons">
+          <a class="bouton bouton-grand" href="rejoindre.html">Nous rejoindre</a>
+          <a class="bouton bouton-clair bouton-grand" href="guide.html">Voir le guide pas à pas</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="pied">
+  <div class="conteneur">
+    <ul>
+      <li><a href="licence.html">Licence EUPL 1.2</a></li>
+      <li><a href="accessibilite.html">Accessibilité : non conforme</a></li>
+      <li><a href="https://github.com/mairie-mezieres/mat-communes">Code source de ce site</a></li>
+      <li><a href="https://mezieres-lez-clery.fr/">L’application MAT</a></li>
+    </ul>
+    <p>Site d’entraide proposé par la commune de Mézières-lez-Cléry (Loiret), lauréate du Territoria d’Or 2026.</p>
+  </div>
+</footer>
+</body>
+</html>

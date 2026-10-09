@@ -137,6 +137,8 @@ main { display: block; padding-bottom: 3rem; }
   padding: 1.5rem; border-top: 6px solid var(--vert-sauge);
 }
 .carte > :last-child { margin-bottom: 0; }
+.liste-nue { list-style: none; margin: 0; padding: 0; }
+.liste-nue > li + li { margin-top: 0; }
 .grille { display: grid; gap: 1.25rem; grid-template-columns: 1fr; }
 @media (min-width: 40em) { .grille-2, .grille-3 { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 64em) { .grille-3 { grid-template-columns: repeat(3, 1fr); } }
@@ -148,6 +150,9 @@ main { display: block; padding-bottom: 3rem; }
 .lisere-feuille { border-top-color: var(--vert-feuille); }
 .lisere-sauge { border-top-color: var(--vert-sauge); }
 
+/* Lien seul sur sa ligne : cible de 48 px (les liens DANS une phrase relèvent de
+   l’exception « en ligne » du critère WCAG 2.5.8). */
+.lien-fort { display: inline-flex; align-items: center; min-height: var(--cible); font-weight: 800; }
 .icone { font-size: 2rem; line-height: 1; display: block; margin-bottom: 0.5rem; }
 
 /* ── Boutons (liens ou <button>) ── */
@@ -213,7 +218,10 @@ main { display: block; padding-bottom: 3rem; }
 .bandeau h1 { color: var(--blanc); max-width: 22ch; }
 .bandeau .chapo { color: var(--fond-creme); }
 .bandeau-grille { display: grid; gap: 2rem; align-items: center; }
-@media (min-width: 60em) { .bandeau-grille { grid-template-columns: 1.4fr 1fr; } }
+@media (min-width: 60em) {
+  .bandeau-grille { grid-template-columns: 1.4fr 1fr; }
+  .bandeau-grille:has(> .emplacement.est-masque) { grid-template-columns: 1fr; }
+}
 .bandeau-deco { position: absolute; right: -4rem; bottom: -5rem; width: 22rem; height: 22rem; opacity: 0.12; pointer-events: none; }
 .bandeau .emplacement-apercu { background: transparent; color: var(--fond-creme); border-color: var(--fond-creme); }
 .bandeau .emplacement figcaption { color: var(--fond-creme); }
