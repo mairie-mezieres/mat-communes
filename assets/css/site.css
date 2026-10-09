@@ -275,6 +275,9 @@ main { display: block; padding-bottom: 3rem; }
 .faq-filtre[aria-pressed="true"]::before { content: "✓ "; }
 .faq-etat { font-weight: 800; margin: 1rem 0; }
 .faq-liste { display: grid; gap: 0.9rem; margin-bottom: 2rem; }
+/* Place réservée pendant le chargement de faq.json : sans elle, l’encart du bas
+   saute de 1 000 px à l’arrivée des questions (CLS 0,24 mesuré par Lighthouse). */
+.faq-liste:empty { min-height: 70rem; }
 .faq-question { background: var(--blanc); border-radius: var(--rayon); box-shadow: var(--ombre); border-left: 6px solid var(--vert-sauge); }
 .faq-question summary {
   display: flex; flex-direction: column; gap: 0.15rem; min-height: var(--cible); padding: 1rem 3.25rem 1rem 1.25rem;
