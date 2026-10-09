@@ -1,0 +1,70 @@
+# Formulaire « Nous rejoindre » : une commune se présente.
+# Ouvert depuis https://mairie-mezieres.github.io/mat-communes/rejoindre.html
+# ⚠️ L’étiquette « demande-commune » doit exister dans le dépôt (Issues → Labels),
+# sinon GitHub ne la pose pas.
+name: Demande d’une commune
+description: Votre commune souhaite reprendre MAT ? Présentez-vous en quelques lignes.
+title: "[Commune] "
+labels: ["demande-commune"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Merci de votre intérêt pour MAT !
+
+        **Cette demande est publique** : n’y indiquez ni numéro de téléphone, ni adresse personnelle, ni clé ou mot de passe. Vous serez prévenu par courriel à chaque réponse.
+  - type: input
+    id: commune
+    attributes:
+      label: Commune
+      description: Le nom de votre commune.
+      placeholder: Saint-Exemple
+    validations:
+      required: true
+  - type: input
+    id: population
+    attributes:
+      label: Population
+      description: Nombre d’habitants, environ.
+      placeholder: "1 200"
+    validations:
+      required: true
+  - type: input
+    id: departement
+    attributes:
+      label: Département
+      placeholder: Loiret (45)
+    validations:
+      required: true
+  - type: checkboxes
+    id: competences
+    attributes:
+      label: Compétences disponibles
+      description: Qui pourrait porter le projet dans votre commune ? Plusieurs réponses possibles.
+      options:
+        - label: Un élu ou une élue à l’aise avec l’informatique
+        - label: Une ou un secrétaire de mairie disponible pour le projet
+        - label: Un agent ou une technicienne de la commune
+        - label: Une habitante ou un habitant bénévole qui sait programmer
+        - label: Personne pour l’instant
+  - type: input
+    id: prestataire
+    attributes:
+      label: Prestataire informatique éventuel
+      description: Le nom de la société qui s’occupe de l’informatique de la mairie, si vous en avez une. Laissez vide sinon.
+  - type: textarea
+    id: besoin
+    attributes:
+      label: Votre besoin
+      description: Ce que vous attendez de MAT, où vous en êtes, ce qui vous fait hésiter ou vous bloque.
+    validations:
+      required: true
+  - type: checkboxes
+    id: confidentialite
+    attributes:
+      label: Vérification
+      options:
+        - label: Je n’ai indiqué aucune donnée personnelle, aucune clé ni aucun mot de passe.
+          required: true
+        - label: Je comprends que cette demande est visible par tous.
+          required: true

@@ -1,0 +1,10 @@
+# Les demandes passent par le formulaire « Demande d’une commune » ; les questions,
+# par l’espace d’entraide (Discussions), où leur réponse profite à toutes les communes.
+blank_issues_enabled: false
+contact_links:
+  - name: Poser une question aux autres communes
+    url: https://github.com/mairie-mezieres/mat-communes/discussions
+    about: Pour toute question sur l’installation ou l’utilisation de MAT.
+  - name: Questions fréquentes
+    url: https://mairie-mezieres.github.io/mat-communes/faq.html
+    about: Les réponses aux questions que se posent toutes les communes.
