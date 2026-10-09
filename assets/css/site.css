@@ -1,0 +1,249 @@
+/* MAT · entraide entre communes — feuille de style unique.
+ *
+ * Public : élus et secrétaires de mairie, souvent âgés.
+ *  - texte courant à 18 px (1.125rem), jamais sous 16 px (contrôlé par scripts/controles.js) ;
+ *  - cibles cliquables d’au moins 48 px de haut ;
+ *  - contraste AA au minimum, mesuré sur la charte (voir les commentaires des jetons) ;
+ *  - aucune animation hors prefers-reduced-motion: no-preference ;
+ *  - affichage piloté par classes (.est-masque), jamais par style en ligne.
+ */
+
+/* ── Polices auto-hébergées (Nunito variable, licence OFL : assets/fonts/OFL.txt) ── */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 200 1000;
+  font-display: swap;
+  src: url(../fonts/nunito-variable-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 200 1000;
+  font-display: swap;
+  src: url(../fonts/nunito-variable-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ── Charte ──────────────────────────────────────────────────────────────────
+ * Contrastes mesurés (WCAG) :
+ *   vertForet sur fondCreme 10,7 · sur blanc 12,0 · fondCreme sur dégradé du bandeau ≥ 6,6
+ *   vertForet sur travaux (#F5A623) 5,9 · vertForet sur vertSauge 4,8
+ *   vertFeuille sur fondCreme 4,55 (limite) → jamais employé pour du texte courant
+ *   ⛔ communication (#2E86C1) 3,5 et fetes (#8B5CF6) 4,2 échouent en texte normal :
+ *      ces deux couleurs ne servent qu’à la DÉCORATION (filets, pastilles, icônes).
+ */
+:root {
+  --vert-foret: #1A3D2B;
+  --vert-feuille: #2E7D32;
+  --vert-sauge: #7CB342;
+  --communication: #2E86C1;
+  --travaux: #F5A623;
+  --fetes: #8B5CF6;
+  --rouge: #C0392B;
+  --fond-creme: #F5F1E8;
+
+  --texte: #1A3D2B;
+  --texte-doux: #3F4F45;           /* 7,7 sur fondCreme */
+  --blanc: #FFFFFF;
+  --bordure-champ: #5E6B62;        /* 5,6 sur blanc : bordure de composant ≥ 3:1 */
+  --bordure-deco: #D9D1BF;
+  --sombre-2: #2B5F3E;             /* fin du dégradé du bandeau, fondCreme dessus : 6,6 */
+  --fond-doux: #E8F2DF;            /* vertForet dessus : 10,4 */
+  --fond-attention: #FFF4DC;
+
+  --rayon: 16px;
+  --ombre: 0 2px 14px rgba(26, 61, 43, 0.10);
+  --largeur: 72rem;
+  --cible: 48px;
+}
+
+/* ── Base ── */
+*, *::before, *::after { box-sizing: border-box; }
+html { font-size: 100%; -webkit-text-size-adjust: 100%; scroll-padding-top: 1rem; }
+body {
+  margin: 0;
+  background: var(--fond-creme);
+  color: var(--texte);
+  font-family: 'Nunito', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.65;
+  overflow-wrap: break-word;
+}
+img { max-width: 100%; height: auto; display: block; }
+h1, h2, h3 { line-height: 1.25; margin: 0 0 0.6em; font-weight: 900; }
+h1 { font-size: clamp(2rem, 5.5vw, 3.25rem); }
+h2 { font-size: clamp(1.5rem, 3.6vw, 2.1rem); }
+h3 { font-size: 1.3rem; }
+p, ul, ol { margin: 0 0 1em; }
+li + li { margin-top: 0.35em; }
+strong { font-weight: 800; }
+
+a { color: var(--vert-foret); text-decoration: underline; text-underline-offset: 0.18em; text-decoration-thickness: 2px; }
+a:hover { color: var(--vert-feuille); text-decoration-thickness: 3px; }
+
+:focus-visible { outline: 3px solid var(--vert-foret); outline-offset: 3px; border-radius: 4px; }
+.zone-sombre :focus-visible, .pied :focus-visible, .bandeau :focus-visible { outline-color: var(--travaux); }
+
+.est-masque { display: none !important; }
+.visuellement-masque {
+  position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+.conteneur { width: 100%; max-width: var(--largeur); margin: 0 auto; padding: 0 1rem; }
+@media (min-width: 48em) { .conteneur { padding: 0 2rem; } }
+
+/* ── Lien d’évitement ── */
+.evitement {
+  position: absolute; left: 1rem; top: -10rem; z-index: 10;
+  background: var(--vert-foret); color: var(--fond-creme);
+  padding: 0.8rem 1.2rem; border-radius: 0 0 12px 12px; font-weight: 800;
+}
+.evitement:focus { top: 0; color: var(--fond-creme); outline-color: var(--travaux); }
+
+/* ── En-tête et menu (toujours visible : pas de menu « hamburger », mal compris) ── */
+.entete { background: var(--blanc); border-bottom: 4px solid var(--vert-sauge); }
+.entete-haut { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-top: 0.75rem; padding-bottom: 0.25rem; flex-wrap: wrap; }
+.marque { display: inline-flex; align-items: center; gap: 0.6rem; min-height: var(--cible); text-decoration: none; color: var(--vert-foret); font-weight: 900; font-size: 1.25rem; line-height: 1.2; }
+.marque:hover { color: var(--vert-foret); }
+.marque-logo {
+  display: inline-grid; place-items: center; width: 2.75rem; height: 2.75rem; border-radius: 12px;
+  background: var(--vert-foret); color: var(--fond-creme); font-size: 1.05rem; letter-spacing: 0.02em;
+}
+.marque-sous { display: block; font-weight: 700; font-size: 1rem; color: var(--texte-doux); }
+
+.nav-principale ul { list-style: none; margin: 0; padding: 0.5rem 0 0.75rem; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.nav-principale li + li { margin-top: 0; }
+.nav-principale a {
+  display: inline-flex; align-items: center; min-height: var(--cible); padding: 0.4rem 0.9rem;
+  border-radius: 999px; text-decoration: none; font-weight: 800; color: var(--vert-foret);
+  border: 2px solid transparent;
+}
+.nav-principale a:hover { border-color: var(--vert-sauge); color: var(--vert-foret); }
+.nav-principale a[aria-current="page"] { background: var(--vert-foret); color: var(--fond-creme); }
+
+/* ── Contenu ── */
+main { display: block; padding-bottom: 3rem; }
+.section { padding: 2.5rem 0; }
+.section-titre { max-width: 46rem; }
+.chapo { font-size: 1.25rem; color: var(--texte-doux); max-width: 46rem; }
+.entete-page { padding: 2.25rem 0 1rem; }
+.entete-page p { max-width: 46rem; }
+
+.carte {
+  background: var(--blanc); border-radius: var(--rayon); box-shadow: var(--ombre);
+  padding: 1.5rem; border-top: 6px solid var(--vert-sauge);
+}
+.carte > :last-child { margin-bottom: 0; }
+.grille { display: grid; gap: 1.25rem; grid-template-columns: 1fr; }
+@media (min-width: 40em) { .grille-2, .grille-3 { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 64em) { .grille-3 { grid-template-columns: repeat(3, 1fr); } }
+
+.lisere-communication { border-top-color: var(--communication); }
+.lisere-travaux { border-top-color: var(--travaux); }
+.lisere-fetes { border-top-color: var(--fetes); }
+.lisere-rouge { border-top-color: var(--rouge); }
+.lisere-feuille { border-top-color: var(--vert-feuille); }
+.lisere-sauge { border-top-color: var(--vert-sauge); }
+
+.icone { font-size: 2rem; line-height: 1; display: block; margin-bottom: 0.5rem; }
+
+/* ── Boutons (liens ou <button>) ── */
+.bouton {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+  min-height: var(--cible); padding: 0.7rem 1.4rem; border-radius: 999px;
+  font: inherit; font-weight: 900; text-decoration: none; text-align: center; cursor: pointer;
+  background: var(--vert-foret); color: var(--fond-creme); border: 2px solid var(--vert-foret);
+}
+.bouton:hover { background: var(--sombre-2); color: var(--blanc); border-color: var(--sombre-2); }
+.bouton-clair { background: var(--blanc); color: var(--vert-foret); }
+.bouton-clair:hover { background: var(--fond-doux); color: var(--vert-foret); border-color: var(--vert-foret); }
+.bouton-vif { background: var(--travaux); color: var(--vert-foret); border-color: var(--travaux); }
+.bouton-vif:hover { background: #FFC15A; color: var(--vert-foret); border-color: #FFC15A; }
+.bouton-grand { font-size: 1.25rem; padding: 0.9rem 1.8rem; }
+.boutons { display: flex; flex-wrap: wrap; gap: 0.8rem; margin: 1.25rem 0; }
+
+/* ── Encadrés ── */
+.encadre { background: var(--fond-doux); border-left: 6px solid var(--vert-feuille); border-radius: 0 12px 12px 0; padding: 1rem 1.25rem; margin: 1.25rem 0; }
+.encadre > :last-child { margin-bottom: 0; }
+.encadre-attention { background: var(--fond-attention); border-left-color: var(--travaux); }
+.encadre-danger { background: #FDECEA; border-left-color: var(--rouge); }
+
+/* ── Emplacements d’images (photos de la commune, mascottes, captures) ──
+ * L’image n’est posée que si le fichier existe (assets/js/commun.js) ; sinon
+ * l’emplacement disparaît. Avec ?apercu dans l’adresse, il reste visible et
+ * nomme le fichier attendu — pour savoir quoi déposer, et où. */
+.emplacement { margin: 0; }
+.emplacement img { border-radius: var(--rayon); width: 100%; }
+.emplacement-apercu {
+  display: grid; place-items: center; min-height: 10rem; padding: 1rem; text-align: center;
+  border: 3px dashed var(--bordure-champ); border-radius: var(--rayon); background: var(--blanc);
+  color: var(--texte-doux); font-weight: 700;
+}
+.emplacement figcaption { font-size: 1rem; color: var(--texte-doux); margin-top: 0.4rem; }
+
+/* ── Pied de page ── */
+.pied { background: var(--vert-foret); color: var(--fond-creme); padding: 2rem 0 2.5rem; margin-top: 2rem; }
+.pied a { color: var(--fond-creme); }
+.pied a:hover { color: var(--blanc); }
+.pied ul { list-style: none; padding: 0; margin: 0 0 1rem; display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; }
+.pied li + li { margin-top: 0; }
+.pied li a { display: inline-flex; align-items: center; min-height: var(--cible); }
+.pied p { margin: 0; font-size: 1rem; }
+
+/* ── Badge « Territoria d’Or 2026 » ──
+ * Fond OPAQUE et couleur déclarée avec lui (RGAA 10.5), vertForet sur travaux : 5,9.
+ * L’emoji est aria-hidden : la lecture vocale ne lit que le libellé. */
+.badge-territoria {
+  display: inline-flex; align-items: center; gap: 0.55rem; margin: 0 0 1.25rem;
+  padding: 0.45rem 1.1rem 0.45rem 0.8rem; border-radius: 999px;
+  background: var(--travaux); color: var(--vert-foret);
+  font-weight: 900; font-size: 1.125rem; box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+}
+.badge-territoria .badge-ico { font-size: 1.5rem; line-height: 1; }
+
+/* ── Bandeau d’accueil ── */
+.bandeau {
+  background: linear-gradient(150deg, var(--vert-foret) 0%, var(--sombre-2) 100%);
+  background-color: var(--vert-foret);
+  color: var(--fond-creme); padding: 3rem 0 3.5rem; position: relative; overflow: hidden;
+}
+.bandeau h1 { color: var(--blanc); max-width: 22ch; }
+.bandeau .chapo { color: var(--fond-creme); }
+.bandeau-grille { display: grid; gap: 2rem; align-items: center; }
+@media (min-width: 60em) { .bandeau-grille { grid-template-columns: 1.4fr 1fr; } }
+.bandeau-deco { position: absolute; right: -4rem; bottom: -5rem; width: 22rem; height: 22rem; opacity: 0.12; pointer-events: none; }
+.bandeau .emplacement-apercu { background: transparent; color: var(--fond-creme); border-color: var(--fond-creme); }
+.bandeau .emplacement figcaption { color: var(--fond-creme); }
+
+/* ── Chiffres-clés ── */
+.chiffres { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); list-style: none; padding: 0; margin: 0; }
+.chiffres li + li { margin-top: 0; }
+.chiffre { background: var(--blanc); border-radius: var(--rayon); padding: 1.25rem; box-shadow: var(--ombre); border-left: 6px solid var(--vert-sauge); }
+.chiffre-valeur { display: block; font-size: 2.5rem; font-weight: 900; line-height: 1.1; color: var(--vert-foret); }
+.chiffre-libelle { display: block; font-weight: 700; }
+.chiffre-date { display: block; font-size: 1rem; color: var(--texte-doux); }
+.chiffre-vide .chiffre-valeur { color: var(--texte-doux); }
+
+/* ── Animations : seulement si l’utilisateur ne demande pas à les réduire ── */
+@media (prefers-reduced-motion: no-preference) {
+  .anime-entree { animation: entree 700ms cubic-bezier(.2, .8, .2, 1) both; }
+  .anime-entree-2 { animation-delay: 120ms; }
+  .anime-entree-3 { animation-delay: 240ms; }
+  .badge-territoria { animation: badge 1200ms cubic-bezier(.2, .8, .2, 1) both; }
+  .badge-territoria .badge-ico { animation: trophee 1600ms ease-in-out 400ms 2; }
+  .bouton { transition: background-color 150ms, border-color 150ms; }
+}
+@keyframes entree { from { transform: translateY(18px); } to { transform: none; } }
+@keyframes badge { 0% { transform: scale(.6) rotate(-6deg); } 60% { transform: scale(1.06) rotate(1deg); } 100% { transform: none; } }
+@keyframes trophee { 0%, 100% { transform: none; } 30% { transform: rotate(-12deg) scale(1.15); } 60% { transform: rotate(10deg) scale(1.1); } }
+
+/* ── Impression : on n’imprime que le contenu ── */
+@media print {
+  .entete, .pied, .evitement, .boutons, .pas-imprimer { display: none !important; }
+  body { background: #fff; font-size: 12pt; }
+  .carte { box-shadow: none; border: 1px solid #999; }
+  a { color: #000; }
+}
