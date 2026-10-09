@@ -345,3 +345,8 @@ code { font-family: ui-monospace, 'Cascadia Mono', Menlo, Consolas, monospace; f
 
 /* ── Licence ── */
 .licence-points h3 { margin-bottom: 0.4em; }
+
+/* ── Déclaration d’accessibilité ── */
+.declaration .conteneur > h2 { margin-top: 1.5em; }
+.declaration .conteneur > h2:first-child { margin-top: 0; }
+.declaration p, .declaration ul { max-width: 46rem; }
