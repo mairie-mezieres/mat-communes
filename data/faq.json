@@ -1,0 +1,159 @@
+{
+  "_lisezMoi": [
+    "Questions fréquentes. Chaque réponse est une liste de paragraphes (texte brut : aucune balise HTML, elle s’afficherait telle quelle).",
+    "aValider: true affiche « réponse en cours de validation » sous la réponse. Passer à false une fois la réponse relue.",
+    "liens : adresses en https:// ou pages du site (ex. guide.html). Ne JAMAIS recopier ici une procédure technique : renvoyer vers sa source (DEPLOIEMENT.md).",
+    "Après modification : node scripts/controles.js"
+  ],
+  "categories": [
+    { "id": "demarrage", "libelle": "Démarrage" },
+    { "id": "comptes", "libelle": "Comptes et clés" },
+    { "id": "couts", "libelle": "Coûts" },
+    { "id": "souverainete", "libelle": "Souveraineté" },
+    { "id": "accessibilite", "libelle": "Accessibilité" },
+    { "id": "support", "libelle": "Support" }
+  ],
+  "questions": [
+    {
+      "id": "informaticien",
+      "categorie": "demarrage",
+      "question": "Faut-il un informaticien pour installer MAT dans ma commune ?",
+      "reponse": [
+        "Pas forcément. La mise en place consiste surtout à créer des comptes sur des sites internet et à recopier des informations de l’un à l’autre. Le guide pas à pas vous accompagne, un écran à la fois.",
+        "Il faut en revanche une personne à l’aise avec un ordinateur, disponible quelques heures, et prête à demander de l’aide dans l’entraide si elle bloque. Plusieurs sites à utiliser sont en anglais."
+      ],
+      "liens": [
+        { "texte": "Le guide pas à pas", "url": "guide.html" },
+        { "texte": "L’entraide entre communes", "url": "entraide.html" }
+      ],
+      "aValider": true
+    },
+    {
+      "id": "duree",
+      "categorie": "demarrage",
+      "question": "Combien de temps faut-il pour démarrer ?",
+      "reponse": [
+        "Le guide de déploiement compte 1 à 2 heures la première fois pour une mise en ligne minimale : l’essentiel du temps sert à créer les comptes et à recopier les clés.",
+        "Adapter ensuite l’application à votre commune (élus, horaires de la mairie, collecte des déchets…) demande davantage : mieux vaut l’étaler sur plusieurs séances."
+      ],
+      "liens": [
+        { "texte": "Guide de déploiement (source technique)", "url": "https://github.com/mairie-mezieres/app-mezieres/blob/main/docs/DEPLOIEMENT.md" }
+      ],
+      "aValider": true
+    },
+    {
+      "id": "deux-chemins",
+      "categorie": "demarrage",
+      "question": "Quelle différence entre « répliquer MAT » et « créer un site avec l’IA » ?",
+      "reponse": [
+        "Il existe deux chemins. Répliquer MAT, c’est reprendre l’application de Mézières telle qu’elle est, avec toutes ses fonctions, puis l’adapter à votre commune : c’est le parcours du guide pas à pas.",
+        "Créer un site avec l’IA, c’est remplir un questionnaire qui prépare une demande pour une intelligence artificielle ; celle-ci fabrique un site neuf, plus simple, avec les seules fonctions que vous avez choisies. Le questionnaire affiche aussi une estimation du coût mensuel."
+      ],
+      "liens": [
+        { "texte": "Le guide pas à pas (répliquer MAT)", "url": "guide.html" },
+        { "texte": "Le questionnaire « créer un site avec l’IA »", "url": "https://mezieres-lez-clery.fr/partager.html" }
+      ],
+      "aValider": true
+    },
+    {
+      "id": "comptes-a-creer",
+      "categorie": "comptes",
+      "question": "Quels comptes faut-il créer, et à quel nom ?",
+      "reponse": [
+        "Pour la version minimale, trois comptes suffisent : GitHub (qui garde le code et publie l’application), Render (qui fait tourner le serveur) et Upstash (qui garde les données). D’autres services s’ajoutent ensuite, selon les fonctions que vous voulez : assistante MEL, Facebook, photos…",
+        "Créez-les avec une adresse électronique de la mairie, pas avec l’adresse personnelle d’un élu : les comptes doivent survivre à un changement de mandat. Notez chacun d’eux dans le carnet de route du guide."
+      ],
+      "liens": [
+        { "texte": "Liste complète des comptes (guide de déploiement, section 3)", "url": "https://github.com/mairie-mezieres/app-mezieres/blob/main/docs/DEPLOIEMENT.md#3-checklist-des-comptes" },
+        { "texte": "Le carnet de route à imprimer", "url": "guide.html#carnet" }
+      ],
+      "aValider": true
+    },
+    {
+      "id": "cle-variable",
+      "categorie": "comptes",
+      "question": "C’est quoi, une « clé » ou une « variable d’environnement » ?",
+      "reponse": [
+        "Une clé est une sorte de mot de passe qu’un service vous donne pour que votre application puisse s’en servir : la base de données vous en donne une, l’assistante MEL une autre, et ainsi de suite.",
+        "Une variable d’environnement est simplement une case, sur le site de l’hébergeur du serveur (Render), où l’on range cette clé sous un nom précis, par exemple UPSTASH_REDIS_REST_TOKEN. Le nom peut être montré à tout le monde ; la valeur, jamais.",
+        "Règle d’or : ne recopiez jamais la valeur d’une clé dans le code, dans un message de l’entraide ou dans un courriel."
+      ],
+      "liens": [
+        { "texte": "Où coller chaque clé (guide de déploiement, section 6)", "url": "https://github.com/mairie-mezieres/app-mezieres/blob/main/docs/DEPLOIEMENT.md#6-où-coller-chaque-clé-" }
+      ],
+      "aValider": true
+    },
+    {
+      "id": "cle-perdue",
+      "categorie": "comptes",
+      "question": "J’ai perdu une clé ou un mot de passe : que faire ?",
+      "reponse": [
+        "Une clé perdue se régénère depuis le service qui l’a donnée ; on recolle ensuite la nouvelle valeur sur Render, à la place de l’ancienne.",
+        "Si une clé a été montrée ou publiée par erreur, régénérez-la tout de suite : l’ancienne doit être considérée comme connue de tous.",
+        "Cas particulier : changer les clés de notification oblige les habitants à réactiver les notifications sur leur téléphone. À éviter sans raison."
+      ],
+      "liens": [
+        { "texte": "Vérification et dépannage (guide de déploiement, section 8)", "url": "https://github.com/mairie-mezieres/app-mezieres/blob/main/docs/DEPLOIEMENT.md#8-vérification--dépannage" }
+      ],
+      "aValider": true
+    },
+    {
+      "id": "cout",
+      "categorie": "couts",
+      "question": "Combien cela coûte-t-il ?",
+      "reponse": [
+        "Le code de MAT est gratuit : sa licence permet à toute commune de le reprendre. Tous les services utilisés ont une offre gratuite suffisante pour démarrer.",
+        "Des frais peuvent venir ensuite : un serveur qui ne se met pas en veille (le guide de déploiement indique environ 7 € par mois), l’assistante MEL facturée à l’usage (quelques euros par mois pour un petit village, selon le même guide), et un nom de domaine si vous en voulez un.",
+        "Le questionnaire « créer un site avec l’IA » calcule une fourchette selon les fonctions choisies."
+      ],
+      "liens": [
+        { "texte": "Les coûts (guide de déploiement, section 4)", "url": "https://github.com/mairie-mezieres/app-mezieres/blob/main/docs/DEPLOIEMENT.md#4-coûts" },
+        { "texte": "Le simulateur de coût", "url": "https://mezieres-lez-clery.fr/partager.html" }
+      ],
+      "aValider": true
+    },
+    {
+      "id": "donnees",
+      "categorie": "souverainete",
+      "question": "Où sont hébergées les données des habitants ?",
+      "reponse": [
+        "Le serveur et la base de données se créent dans une région de l’Union européenne (Francfort, en Allemagne), comme le prévoit le guide de déploiement.",
+        "Les pages de l’application, elles, sont publiées par GitHub, une entreprise américaine ; elles ne contiennent aucune donnée sur les habitants. L’application ne charge aucune police, aucun script ni aucune image depuis un service tiers.",
+        "Les questions posées à l’assistante MEL sont envoyées à un fournisseur d’intelligence artificielle : Mistral (entreprise française) en priorité, Anthropic en secours, selon les clés que vous renseignez."
+      ],
+      "liens": [
+        { "texte": "Le guide de déploiement", "url": "https://github.com/mairie-mezieres/app-mezieres/blob/main/docs/DEPLOIEMENT.md" }
+      ],
+      "aValider": true
+    },
+    {
+      "id": "accessible",
+      "categorie": "accessibilite",
+      "question": "L’application est-elle accessible aux personnes âgées ou handicapées ?",
+      "reponse": [
+        "L’application de Mézières-lez-Cléry a été auditée sur les 106 critères du référentiel général d’amélioration de l’accessibilité (RGAA) : gros caractères, contrastes, navigation au clavier, lecteurs d’écran.",
+        "Attention : cette conformité ne se transmet pas automatiquement à votre copie. Les textes et les images que vous ajouterez doivent rester accessibles, et votre commune doit publier sa propre déclaration d’accessibilité."
+      ],
+      "liens": [
+        { "texte": "L’audit d’accessibilité de MAT", "url": "https://github.com/mairie-mezieres/app-mezieres/blob/main/docs/accessibilite/audit-rgaa-2026-08-27.md" }
+      ],
+      "aValider": true
+    },
+    {
+      "id": "aide-panne",
+      "categorie": "support",
+      "question": "Qui m’aide si je suis bloqué, ou en cas de panne ?",
+      "reponse": [
+        "MAT est un projet partagé entre communes, pas un service commercial : il n’y a ni assistance téléphonique, ni garantie. L’aide vient des autres communes.",
+        "Dans l’ordre : cherchez dans ces questions fréquentes, posez votre question dans l’entraide (les communes ambassadrices y répondent), et venez au webinaire mensuel.",
+        "En cas de panne, l’administration de votre application propose un diagnostic des services, qui teste chaque intégration et signale les clés manquantes. Vous pouvez aussi confier la maintenance à votre prestataire informatique habituel : tout le code est ouvert et documenté."
+      ],
+      "liens": [
+        { "texte": "L’entraide entre communes", "url": "entraide.html" },
+        { "texte": "Le webinaire mensuel", "url": "webinaire.html" },
+        { "texte": "Vérification et dépannage (guide de déploiement, section 8)", "url": "https://github.com/mairie-mezieres/app-mezieres/blob/main/docs/DEPLOIEMENT.md#8-vérification--dépannage" }
+      ],
+      "aValider": true
+    }
+  ]
+}

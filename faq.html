@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Questions fréquentes — MAT · entraide entre communes</title>
+<meta name="description" content="Les réponses aux questions que se posent les communes qui veulent reprendre l’application MAT : démarrage, comptes et clés, coûts, souveraineté, accessibilité, support.">
+<meta name="theme-color" content="#1A3D2B">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/site.css">
+<script src="assets/js/commun.js" defer></script>
+<script src="assets/js/faq.js" defer></script>
+</head>
+<body>
+<a class="evitement" href="#contenu">Aller au contenu</a>
+<header class="entete">
+  <div class="conteneur">
+    <div class="entete-haut">
+      <a class="marque" href="index.html"><span class="marque-logo" aria-hidden="true">MAT</span><span>MAT · entraide <span class="marque-sous">entre communes</span></span></a>
+    </div>
+    <nav class="nav-principale" aria-label="Menu principal">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="guide.html">Répliquer MAT</a></li>
+        <li><a href="faq.html" aria-current="page">Questions fréquentes</a></li>
+        <li><a href="entraide.html">Entraide</a></li>
+        <li><a href="webinaire.html">Webinaire</a></li>
+        <li><a href="rejoindre.html">Nous rejoindre</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="contenu" tabindex="-1">
+  <section class="entete-page">
+    <div class="conteneur">
+      <h1>Questions fréquentes</h1>
+      <p class="chapo">Les questions que se posent toutes les communes au moment de se lancer. Tapez un mot dans la case ci-dessous : la liste se met à jour au fur et à mesure.</p>
+
+      <div class="faq-outils">
+        <label class="faq-label" for="recherche-faq">Rechercher une question</label>
+        <input class="faq-recherche" type="search" id="recherche-faq" name="recherche" autocomplete="off" spellcheck="false" aria-describedby="faq-aide" disabled>
+        <p class="faq-aide" id="faq-aide">Par exemple : clé, coût, compte, panne.</p>
+
+        <div class="faq-filtres" role="group" aria-label="Filtrer par catégorie" id="faq-filtres"></div>
+      </div>
+
+      <p class="faq-etat" id="faq-etat" role="status">Chargement des questions…</p>
+      <noscript><p class="encadre encadre-attention">La recherche a besoin de JavaScript. Vous pouvez aussi poser directement votre question dans <a href="entraide.html">l’entraide entre communes</a>.</p></noscript>
+
+      <div id="faq-liste" class="faq-liste"></div>
+
+      <div class="carte lisere-feuille faq-fin">
+        <h2>Vous n’avez pas trouvé ?</h2>
+        <p>Posez votre question aux autres communes : la réponse servira aussi à celles qui viendront après vous.</p>
+        <div class="boutons">
+          <a class="bouton" href="entraide.html">Poser ma question dans l’entraide</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="pied">
+  <div class="conteneur">
+    <ul>
+      <li><a href="licence.html">Licence EUPL 1.2</a></li>
+      <li><a href="accessibilite.html">Accessibilité : non conforme</a></li>
+      <li><a href="https://github.com/mairie-mezieres/mat-communes">Code source de ce site</a></li>
+      <li><a href="https://mezieres-lez-clery.fr/">L’application MAT</a></li>
+    </ul>
+    <p>Site d’entraide proposé par la commune de Mézières-lez-Cléry (Loiret), lauréate du Territoria d’Or 2026.</p>
+  </div>
+</footer>
+</body>
+</html>
