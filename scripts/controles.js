@@ -222,6 +222,16 @@ if (config) {
       && !Number.isNaN(Date.parse(w.prochaineDate));
     if (!ok) signaler(f, 0, `webinaire.prochaineDate illisible : « ${w.prochaineDate} » (ex. 2026-11-05T18:00:00+01:00)`);
   }
+  const dossierImg = path.join(RACINE, 'assets/img');
+  const declarees = new Set(config.imagesDeposees || []);
+  for (const nom of declarees) {
+    if (!fs.existsSync(path.join(dossierImg, nom))) signaler(f, 0, `imagesDeposees : « ${nom} » absent de assets/img/`);
+  }
+  for (const nom of fs.existsSync(dossierImg) ? fs.readdirSync(dossierImg) : []) {
+    if (/\.(webp|jpe?g|png|avif)$/i.test(nom) && !declarees.has(nom)) {
+      signaler(f, 0, `image « assets/img/${nom} » déposée mais absente de imagesDeposees : elle ne s’affichera pas`);
+    }
+  }
   for (const c of config.chiffresCles || []) {
     if (c.valeur !== null && c.date === null) signaler(f, 0, `chiffre « ${c.id} » sans date : il ne sera pas affiché`);
     if (c.date !== null && !/^\d{4}-\d{2}-\d{2}$/.test(c.date)) signaler(f, 0, `chiffre « ${c.id} » : date attendue au format AAAA-MM-JJ`);

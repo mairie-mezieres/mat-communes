@@ -112,40 +112,42 @@
     };
   }
 
-  /* Emplacements d’images : l’image n’apparaît que si le fichier existe.
+  /* Réglages du site, chargés une seule fois pour toute la page. */
+  var config = chargerJSON('data/config.json').catch(function (e) {
+    console.warn('[MAT communes] data/config.json illisible :', e.message);
+    return {};
+  });
+
+  /* Emplacements d’images.
    * <figure class="emplacement est-masque" data-fichier="assets/img/x.webp" data-alt="…">
-   * data-alt="" = image décorative. */
-  function activerEmplacements() {
+   * L’image n’est demandée que si son nom figure dans config.imagesDeposees : un
+   * emplacement encore vide ne coûte ainsi aucune requête (pas d’erreur 404 à chaque
+   * visite). scripts/controles.js signale une image déposée mais non déclarée.
+   * data-alt="" = image décorative. ?apercu dans l’adresse montre les emplacements vides. */
+  function activerEmplacements(reglages) {
+    var deposees = Array.isArray(reglages.imagesDeposees) ? reglages.imagesDeposees : [];
     var figures = document.querySelectorAll('.emplacement[data-fichier]');
     Array.prototype.forEach.call(figures, function (fig) {
       var fichier = fig.getAttribute('data-fichier');
-      var sonde = new Image();
-      sonde.addEventListener('load', function () {
-        var img = el('img', {
-          src: fichier,
-          alt: fig.getAttribute('data-alt') || '',
-          width: sonde.naturalWidth,
-          height: sonde.naturalHeight,
-          loading: 'lazy',
-          decoding: 'async'
-        });
+      var alt = fig.getAttribute('data-alt') || '';
+      if (deposees.indexOf(fichier.split('/').pop()) !== -1) {
+        var img = el('img', { src: fichier, alt: alt, loading: 'lazy', decoding: 'async' });
+        img.addEventListener('error', function () { fig.classList.add('est-masque'); });
         fig.insertBefore(img, fig.firstChild);
         fig.classList.remove('est-masque');
-      });
-      sonde.addEventListener('error', function () {
-        if (!APERCU) return;
+      } else if (APERCU) {
         fig.insertBefore(el('div', {
           classe: 'emplacement-apercu',
-          texte: 'Emplacement réservé : ' + fichier + (fig.getAttribute('data-alt') ? ' — « ' + fig.getAttribute('data-alt') + ' »' : '')
+          texte: 'Emplacement réservé : ' + fichier + (alt ? ' — « ' + alt + ' »' : '')
         }), fig.firstChild);
         fig.classList.remove('est-masque');
-      });
-      sonde.src = fichier;
+      }
     });
   }
 
   window.MATC = {
     APERCU: APERCU,
+    config: config,
     el: el,
     lienSur: lienSur,
     chargerJSON: chargerJSON,
@@ -155,5 +157,5 @@
     prochainWebinaire: prochainWebinaire
   };
 
-  activerEmplacements();
+  config.then(activerEmplacements);
 })();

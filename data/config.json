@@ -1,0 +1,47 @@
+{
+  "_lisezMoi": [
+    "Réglages du site. Une valeur null n’affiche RIEN : aucun chiffre n’est jamais inventé.",
+    "webinaire.prochaineDate est la SEULE date à changer chaque mois, au format 2026-11-05T18:00:00+01:00 (heure de Paris : +01:00 en hiver, +02:00 en été). null = « prochaine date bientôt annoncée ».",
+    "Un chiffre-clé ne s’affiche que s’il a une valeur ET une date (AAAA-MM-JJ) : un chiffre sans date se lit comme un chiffre du jour.",
+    "imagesDeposees : nom de chaque image déposée dans assets/img/ (ex. \"mat-et-mel.webp\"). Une image non listée n’apparaît pas ; le contrôle signale l’oubli.",
+    "Après modification : node scripts/controles.js"
+  ],
+  "imagesDeposees": [],
+  "webinaire": {
+    "prochaineDate": null,
+    "dureeMinutes": 60,
+    "sujet": null,
+    "lienInscription": null,
+    "lienVisio": null
+  },
+  "chiffresCles": [
+    {
+      "id": "installations",
+      "libelle": "installations de l’application MAT",
+      "valeur": null,
+      "date": null,
+      "source": null
+    },
+    {
+      "id": "habitants",
+      "libelle": "habitants à Mézières-lez-Cléry",
+      "valeur": null,
+      "date": null,
+      "source": null
+    },
+    {
+      "id": "rgaa",
+      "libelle": "de conformité au référentiel d’accessibilité (RGAA)",
+      "valeur": null,
+      "date": null,
+      "source": null
+    },
+    {
+      "id": "communes",
+      "libelle": "communes accompagnées par l’entraide",
+      "valeur": null,
+      "date": null,
+      "source": null
+    }
+  ]
+}
