@@ -123,10 +123,11 @@ le disque.)
 2. **Discussions** : *Settings → Features → Discussions*, puis créer les catégories
    **Questions** (format *Question / Answer*), **Entraide**, **Idées**,
    **Communes ambassadrices** et **Annonces** (format *Announcement* : seuls les
-   mainteneurs y publient). Vérifier que leurs adresses correspondent aux liens de
-   `entraide.html` (`…/discussions/categories/questions`, `…/idees`,
-   `…/communes-ambassadrices`…) et que le formulaire
-   `.github/DISCUSSION_TEMPLATE/questions.yml` porte le nom de la catégorie Questions.
+   mainteneurs y publient). Leurs adresses doivent correspondre aux liens du site
+   (`…/discussions/categories/questions`, `…/idees`, `…/communes-ambassadrices`…) et
+   le formulaire `.github/DISCUSSION_TEMPLATE/questions.yml` doit porter le nom de la
+   catégorie Questions : `scripts/verifier-discussions.js` le vérifie à chaque passage
+   de la CI (une catégorie renommée peut garder son ancienne adresse).
 3. **Étiquette** : *Issues → Labels → New label* `demande-commune` (utilisée par le
    formulaire « Nous rejoindre »).
 

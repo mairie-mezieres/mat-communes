@@ -10,6 +10,7 @@ on:
 
 permissions:
   contents: read
+  discussions: read
 
 jobs:
   controles:
@@ -24,6 +25,11 @@ jobs:
 
       - name: Règles du dépôt (apostrophes, JSON, secrets, accessibilité de base…)
         run: node scripts/controles.js
+
+      - name: Liens vers les catégories des Discussions
+        run: node scripts/verifier-discussions.js
+        env:
+          GH_TOKEN: ${{ github.token }}
 
       - name: Lighthouse (accessibilité = 100 exigé)
         run: npx --yes @lhci/cli@0.15.1 autorun
