@@ -1,0 +1,37 @@
+# Contrôles du site : règles du dépôt (scripts/controles.js) puis Lighthouse.
+# L’accessibilité doit rester à 100 sur chaque page : en dessous, la CI échoue.
+name: Contrôles
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  controles:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Règles du dépôt (apostrophes, JSON, secrets, accessibilité de base…)
+        run: node scripts/controles.js
+
+      - name: Lighthouse (accessibilité = 100 exigé)
+        run: npx --yes @lhci/cli@0.15.1 autorun
+
+      - name: Rapports Lighthouse
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rapports-lighthouse
+          path: .lighthouseci/
+          if-no-files-found: ignore

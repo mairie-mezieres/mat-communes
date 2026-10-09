@@ -1,0 +1,35 @@
+{
+  "ci": {
+    "collect": {
+      "staticDistDir": ".",
+      "url": [
+        "http://localhost/index.html",
+        "http://localhost/faq.html",
+        "http://localhost/guide.html",
+        "http://localhost/entraide.html",
+        "http://localhost/rejoindre.html",
+        "http://localhost/webinaire.html",
+        "http://localhost/licence.html",
+        "http://localhost/accessibilite.html",
+        "http://localhost/404.html"
+      ],
+      "numberOfRuns": 1,
+      "settings": {
+        "onlyCategories": ["accessibility", "best-practices", "seo", "performance"],
+        "chromeFlags": "--no-sandbox"
+      }
+    },
+    "assert": {
+      "assertions": {
+        "categories:accessibility": ["error", { "minScore": 1 }],
+        "categories:best-practices": ["warn", { "minScore": 0.9 }],
+        "categories:seo": ["warn", { "minScore": 0.9 }],
+        "categories:performance": ["warn", { "minScore": 0.9 }]
+      }
+    },
+    "upload": {
+      "target": "filesystem",
+      "outputDir": ".lighthouseci"
+    }
+  }
+}
