@@ -294,3 +294,47 @@ main { display: block; padding-bottom: 3rem; }
 .faq-liens li + li { margin-top: 0; }
 .faq-a-valider { display: inline-block; background: var(--fond-attention); border-left: 4px solid var(--travaux); padding: 0.3rem 0.8rem; border-radius: 0 8px 8px 0; font-size: 1rem; margin: 0.25rem 0 0; }
 .faq-fin { margin-top: 1rem; }
+
+/* ── Guide pas à pas ── */
+.sommaire { background: var(--blanc); border-radius: var(--rayon); box-shadow: var(--ombre); margin: 1rem 0; }
+.sommaire summary { min-height: var(--cible); padding: 0.75rem 1.25rem; cursor: pointer; font-weight: 900; display: flex; align-items: center; }
+.sommaire nav { padding: 0 1.25rem 1rem; }
+.sommaire-liste { margin: 0; padding-left: 2rem; }
+.sommaire-liste li + li { margin-top: 0; }
+.sommaire-liste a { display: inline-flex; align-items: center; min-height: 44px; }
+.sommaire-liste a[aria-current="step"] { font-weight: 900; }
+.sommaire-liste a[aria-current="step"]::after { content: " ← vous êtes ici"; font-weight: 700; color: var(--texte-doux); text-decoration: none; }
+.section-guide { padding: 1rem 0 2rem; }
+.etape { background: var(--blanc); border-radius: var(--rayon); box-shadow: var(--ombre); padding: 1.5rem; margin-bottom: 1.5rem; border-top: 6px solid var(--vert-sauge); scroll-margin-top: 1rem; }
+@media (min-width: 48em) { .etape { padding: 2rem 2.5rem; } }
+.etape h2:focus { outline: none; }
+.etape h2:focus-visible { outline: 3px solid var(--vert-foret); outline-offset: 4px; }
+.etape-compteur { font-weight: 900; color: var(--texte-doux); margin: 0 0 0.3rem; }
+.etape-progression { display: block; width: 100%; height: 12px; margin: 0 0 1.25rem; appearance: none; border: 0; border-radius: 999px; background: var(--fond-doux); overflow: hidden; }
+.etape-progression::-webkit-progress-bar { background: var(--fond-doux); border-radius: 999px; }
+.etape-progression::-webkit-progress-value { background: var(--vert-feuille); border-radius: 999px; }
+.etape-progression::-moz-progress-bar { background: var(--vert-feuille); border-radius: 999px; }
+.etape-but { font-size: 1.25rem; }
+.etape-actions { padding-left: 1.75rem; }
+.etape-actions li { padding-left: 0.25rem; }
+.etape-actions li::marker { font-weight: 900; color: var(--vert-feuille); }
+.etape .emplacement { max-width: 48rem; margin: 1rem 0; }
+.etape-nav { display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: space-between; margin-top: 1.5rem; padding-top: 1.25rem; border-top: 2px solid var(--fond-doux); }
+.etape-nav .bouton:only-child { margin-left: auto; }
+code { font-family: ui-monospace, 'Cascadia Mono', Menlo, Consolas, monospace; font-size: 1rem; background: var(--fond-doux); padding: 0.1em 0.35em; border-radius: 6px; overflow-wrap: anywhere; }
+
+/* ── Carnet de route ── */
+.tableau-defile { overflow-x: auto; margin: 0 0 1.5rem; border-radius: 12px; }
+.carnet { border-collapse: collapse; width: 100%; min-width: 40rem; background: var(--blanc); }
+.carnet th, .carnet td { border: 1px solid var(--bordure-champ); padding: 0.6rem 0.75rem; text-align: left; vertical-align: top; }
+.carnet thead th { background: var(--vert-foret); color: var(--fond-creme); }
+.carnet tbody td { height: 3rem; }
+.carnet tbody th { background: var(--fond-doux); }
+
+@media print {
+  .impression-carnet main > section:not(#carnet) { display: none !important; }
+  .impression-carnet .tableau-defile { overflow: visible; }
+  .carnet { min-width: 0; }
+  .carnet thead th { background: #fff; color: #000; }
+  .etape.est-masque { display: block !important; }
+}

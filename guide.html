@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Répliquer MAT pas à pas — MAT · entraide entre communes</title>
+<meta name="description" content="Le parcours pas à pas, un écran par étape, pour mettre en ligne l’application MAT dans votre commune, avec un carnet de route à imprimer.">
+<meta name="theme-color" content="#1A3D2B">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/site.css">
+<script src="assets/js/commun.js" defer></script>
+<script src="assets/js/guide.js" defer></script>
+</head>
+<body>
+<a class="evitement" href="#contenu">Aller au contenu</a>
+<header class="entete">
+  <div class="conteneur">
+    <div class="entete-haut">
+      <a class="marque" href="index.html"><span class="marque-logo" aria-hidden="true">MAT</span><span>MAT · entraide <span class="marque-sous">entre communes</span></span></a>
+    </div>
+    <nav class="nav-principale" aria-label="Menu principal">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="guide.html" aria-current="page">Répliquer MAT</a></li>
+        <li><a href="faq.html">Questions fréquentes</a></li>
+        <li><a href="entraide.html">Entraide</a></li>
+        <li><a href="webinaire.html">Webinaire</a></li>
+        <li><a href="rejoindre.html">Nous rejoindre</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="contenu" tabindex="-1">
+  <section class="entete-page">
+    <div class="conteneur">
+      <h1>Répliquer MAT, pas à pas</h1>
+      <p class="chapo">Un écran par étape, dans l’ordre. Chaque étape dit ce qu’il faut faire et ce qu’il faut noter ; le détail technique reste dans le guide de déploiement de MAT, qui fait foi.</p>
+      <p id="guide-reprendre" class="encadre est-masque"><span id="guide-reprendre-texte"></span> <a id="guide-reprendre-lien" class="lien-fort" href="#etape-0">Reprendre</a></p>
+      <details class="sommaire">
+        <summary>Voir toutes les étapes</summary>
+        <nav aria-label="Étapes du guide">
+          <ol start="0" class="sommaire-liste">
+            <li><a href="#etape-0">Choisir votre chemin</a></li>
+            <li><a href="#etape-1">Avant de commencer</a></li>
+            <li><a href="#etape-2">Créer le compte GitHub</a></li>
+            <li><a href="#etape-3">Copier les deux dépôts de MAT</a></li>
+            <li><a href="#etape-4">Créer la base de données (Upstash)</a></li>
+            <li><a href="#etape-5">Fabriquer les clés de notification</a></li>
+            <li><a href="#etape-6">Mettre en route le serveur (Render)</a></li>
+            <li><a href="#etape-7">Publier l’application (GitHub Pages)</a></li>
+            <li><a href="#etape-8">Relier l’application à votre serveur</a></li>
+            <li><a href="#etape-9">Vérifier que tout fonctionne</a></li>
+            <li><a href="#etape-10">Adapter l’application à votre commune</a></li>
+            <li><a href="#etape-11">Et après ?</a></li>
+          </ol>
+        </nav>
+      </details>
+    </div>
+  </section>
+
+  <section class="section-guide" aria-label="Étapes">
+    <div class="conteneur">
+      <section class="etape" id="etape-0" aria-labelledby="titre-etape-0">
+        <p class="etape-compteur">Étape 0 sur 11</p>
+        <progress class="etape-progression" max="11" value="0" aria-hidden="true"></progress>
+        <h2 id="titre-etape-0" tabindex="-1">Choisir votre chemin</h2>
+        <p class="etape-but">Deux façons d’avoir une application municipale. Choisissez celle qui vous ressemble.</p>
+        <div class="grille grille-2">
+          <div class="carte lisere-feuille">
+            <h3>Reprendre MAT telle qu’elle est</h3>
+            <p>Toutes les fonctions de l’application de Mézières, à adapter à votre commune. Une à deux heures pour la mise en ligne minimale, puis du temps pour personnaliser.</p>
+            <p><a class="lien-fort" href="#etape-1">Suivre ce guide <span aria-hidden="true">→</span></a></p>
+          </div>
+          <div class="carte lisere-fetes">
+            <h3>Créer un site neuf avec l’IA</h3>
+            <p>Un questionnaire prépare une demande pour une intelligence artificielle, qui fabrique un site plus simple avec les seules fonctions choisies, et estime son coût mensuel.</p>
+            <p><a class="lien-fort" href="https://mezieres-lez-clery.fr/partager.html">Ouvrir le questionnaire</a></p>
+          </div>
+        </div>
+        <div class="etape-nav">
+          
+          <a class="bouton" href="#etape-1">Étape suivante : Avant de commencer <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+      <section class="etape" id="etape-1" aria-labelledby="titre-etape-1">
+        <p class="etape-compteur">Étape 1 sur 11</p>
+        <progress class="etape-progression" max="11" value="1" aria-hidden="true"></progress>
+        <h2 id="titre-etape-1" tabindex="-1">Avant de commencer</h2>
+        <p class="etape-but"><strong>Le but :</strong> Réunir ce qu’il faut pour ne pas s’arrêter en route.</p>
+        <p class="encadre encadre-attention">Plusieurs sites à utiliser sont <strong>en anglais</strong>. Ce guide vous dit quoi chercher sur chaque écran.</p>
+        <h3>À faire</h3>
+        <ol class="etape-actions">
+          <li>Prévoyez <strong>un ordinateur</strong> (pas un téléphone) et <strong>une à deux heures</strong> au calme pour la mise en ligne minimale.</li>
+          <li>Choisissez <strong>une adresse électronique de la mairie</strong>, et non celle d’un élu : tous les comptes seront créés avec elle, pour qu’ils survivent à un changement de mandat.</li>
+          <li>Imprimez le <a href="#carnet">carnet de route</a>, plus bas sur cette page, et gardez un stylo à portée de main.</li>
+          <li>Décidez du niveau visé : <strong>minimum</strong> (portail, administration, notifications), <strong>recommandé</strong> (plus l’assistante MEL et la vigilance météo) ou <strong>complet</strong>. Vous pourrez enrichir plus tard.</li>
+        </ol>
+        <figure class="emplacement est-masque" data-fichier="assets/img/captures/etape-01.webp" data-alt="Capture d’écran de l’étape 1 : Avant de commencer"></figure>
+        <p><a class="lien-fort" href="https://github.com/mairie-mezieres/app-mezieres/blob/main/docs/DEPLOIEMENT.md#2-choisissez-votre-niveau-vous-pouvez-enrichir-plus-tard">Le détail technique : Les trois niveaux (guide de déploiement, section 2)</a></p>
+        <div class="etape-nav">
+          <a class="bouton bouton-clair" href="#etape-0"><span aria-hidden="true">←</span> Étape précédente</a>
+          <a class="bouton" href="#etape-2">Étape suivante : Créer le compte GitHub <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+      <section class="etape" id="etape-2" aria-labelledby="titre-etape-2">
+        <p class="etape-compteur">Étape 2 sur 11</p>
+        <progress class="etape-progression" max="11" value="2" aria-hidden="true"></progress>
+        <h2 id="titre-etape-2" tabindex="-1">Créer le compte GitHub</h2>
+        <p class="etape-but"><strong>Le but :</strong> GitHub gardera le code de votre application et la publiera sur internet.</p>
+        <h3>À faire</h3>
+        <ol class="etape-actions">
+          <li>Ouvrez <a href="https://github.com/signup">github.com/signup</a>.</li>
+          <li>Saisissez l’adresse électronique de la mairie, un mot de passe et un nom d’utilisateur, par exemple <em>mairie-saint-exemple</em>.</li>
+          <li>Recopiez le code de vérification reçu par courriel.</li>
+          <li>Rangez le mot de passe dans le coffre de la mairie (gestionnaire de mots de passe, enveloppe au secrétariat…).</li>
+        </ol>
+        <p class="encadre"><strong>À noter dans le <a href="#carnet">carnet</a> :</strong> GitHub : adresse utilisée, date, nom d’utilisateur, où est rangé le mot de passe.</p>
+        <figure class="emplacement est-masque" data-fichier="assets/img/captures/etape-02.webp" data-alt="Capture d’écran de l’étape 2 : Créer le compte GitHub"></figure>
+        <p><a class="lien-fort" href="https://github.com/mairie-mezieres/app-mezieres/blob/main/docs/DEPLOIEMENT.md#a-préparer-le-code-github">Le détail technique : Préparer le code (guide de déploiement, section 5.A)</a></p>
+        <div class="etape-nav">
+          <a class="bouton bouton-clair" href="#etape-1"><span aria-hidden="true">←</span> Étape précédente</a>
+          <a class="bouton" href="#etape-3">Étape suivante : Copier les deux dépôts de MAT <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+      <section class="etape" id="etape-3" aria-labelledby="titre-etape-3">
+        <p class="etape-compteur">Étape 3 sur 11</p>
+        <progress class="etape-progression" max="11" value="3" aria-hidden="true"></progress>
+        <h2 id="titre-etape-3" tabindex="-1">Copier les deux dépôts de MAT</h2>
+        <p class="etape-but"><strong>Le but :</strong> Avoir votre propre copie de MAT — l’application et son serveur — que vous pourrez adapter sans toucher à celle de Mézières.</p>
+        <h3>À faire</h3>
+        <ol class="etape-actions">
+          <li>Connecté à GitHub, ouvrez le dépôt <a href="https://github.com/mairie-mezieres/app-mezieres">app-mezieres</a> (l’application).</li>
+          <li>Cliquez sur le bouton <strong>Fork</strong> (« copier »), en haut à droite, puis confirmez avec <strong>Create fork</strong>.</li>
+          <li>Faites de même pour le dépôt <a href="https://github.com/mairie-mezieres/chatbot-mairie-mezieres">chatbot-mairie-mezieres</a> (le serveur).</li>
+        </ol>
+        <p class="encadre"><strong>À noter dans le <a href="#carnet">carnet</a> :</strong> Les deux adresses de vos copies (github.com/votre-nom/…).</p>
+        <figure class="emplacement est-masque" data-fichier="assets/img/captures/etape-03.webp" data-alt="Capture d’écran de l’étape 3 : Copier les deux dépôts de MAT"></figure>
+        <p><a class="lien-fort" href="https://github.com/mairie-mezieres/app-mezieres/blob/main/docs/DEPLOIEMENT.md#a-préparer-le-code-github">Le détail technique : Préparer le code (guide de déploiement, section 5.A)</a></p>
+        <div class="etape-nav">
+          <a class="bouton bouton-clair" href="#etape-2"><span aria-hidden="true">←</span> Étape précédente</a>
+          <a class="bouton" href="#etape-4">Étape suivante : Créer la base de données (Upstash) <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+      <section class="etape" id="etape-4" aria-labelledby="titre-etape-4">
+        <p class="etape-compteur">Étape 4 sur 11</p>
+        <progress class="etape-progression" max="11" value="4" aria-hidden="true"></progress>
+        <h2 id="titre-etape-4" tabindex="-1">Créer la base de données (Upstash)</h2>
+        <p class="etape-but"><strong>Le but :</strong> Upstash gardera les données de l’application : actualités, abonnements aux notifications, statistiques.</p>
+        <p class="encadre">Nous faisons cette étape <strong>avant</strong> le serveur : Render vous demandera ces deux informations au moment de le créer.</p>
+        <h3>À faire</h3>
+        <ol class="etape-actions">
+          <li>Créez un compte sur <a href="https://console.upstash.com">console.upstash.com</a>, avec l’adresse de la mairie.</li>
+          <li>Créez une base <strong>Redis</strong> et choisissez une région <strong>de l’Union européenne</strong> (Francfort, par exemple).</li>
+          <li>Dans l’onglet <strong>REST API</strong> de la base, repérez deux informations : l’adresse (<code>UPSTASH_REDIS_REST_URL</code>) et le jeton (<code>UPSTASH_REDIS_REST_TOKEN</code>). Laissez l’onglet ouvert : vous les recopierez à l’étape 6.</li>
+        </ol>
+        <p class="encadre"><strong>À noter dans le <a href="#carnet">carnet</a> :</strong> Upstash : adresse utilisée, date, où est rangé le mot de passe. Cocher les deux noms dans le tableau des clés une fois recopiés.</p>
+        <figure class="emplacement est-masque" data-fichier="assets/img/captures/etape-04.webp" data-alt="Capture d’écran de l’étape 4 : Créer la base de données (Upstash)"></figure>
+        <p><a class="lien-fort" href="https://github.com/mairie-mezieres/app-mezieres/blob/main/docs/DEPLOIEMENT.md#d-base-redis-upstash">Le détail technique : Base Redis (guide de déploiement, section 5.D)</a></p>
+        <div class="etape-nav">
+          <a class="bouton bouton-clair" href="#etape-3"><span aria-hidden="true">←</span> Étape précédente</a>
+          <a class="bouton" href="#etape-5">Étape suivante : Fabriquer les clés de notification <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+      <section class="etape" id="etape-5" aria-labelledby="titre-etape-5">
+        <p class="etape-compteur">Étape 5 sur 11</p>
+        <progress class="etape-progression" max="11" value="5" aria-hidden="true"></progress>
+        <h2 id="titre-etape-5" tabindex="-1">Fabriquer les clés de notification</h2>
+        <p class="etape-but"><strong>Le but :</strong> Deux clés, une publique et une privée, permettent d’envoyer des notifications sur le téléphone des habitants.</p>
+        <p class="encadre encadre-danger">La clé <strong>privée</strong> ne doit être montrée à personne, jamais publiée dans l’entraide ni envoyée par courriel. Si elle l’a été, recommencez cette étape.</p>
+        <h3>À faire</h3>
+        <ol class="etape-actions">
+          <li>C’est <strong>la seule étape qui demande de taper une commande</strong> sur un ordinateur où Node.js est installé : <code>npx web-push generate-vapid-keys</code>.</li>
+          <li>La commande affiche une <strong>Public Key</strong> (<code>VAPID_PUBLIC_KEY</code>) et une <strong>Private Key</strong> (<code>VAPID_PRIVATE_KEY</code>). Gardez-les sous la main pour les étapes 6 et 8.</li>
+          <li>Si vous n’avez jamais tapé de commande, demandez à votre prestataire informatique, à un habitant à l’aise, ou dans l’<a href="entraide.html">entraide</a>. Personne n’a besoin d’accéder à vos comptes pour cela.</li>
+        </ol>
+        <p class="encadre"><strong>À noter dans le <a href="#carnet">carnet</a> :</strong> Cocher VAPID_PUBLIC_KEY et VAPID_PRIVATE_KEY dans le tableau des clés.</p>
+        <figure class="emplacement est-masque" data-fichier="assets/img/captures/etape-05.webp" data-alt="Capture d’écran de l’étape 5 : Fabriquer les clés de notification"></figure>
+        <p><a class="lien-fort" href="https://github.com/mairie-mezieres/app-mezieres/blob/main/docs/DEPLOIEMENT.md#c-générer-les-clés-de-notification-vapid">Le détail technique : Clés de notification (guide de déploiement, section 5.C)</a></p>
+        <div class="etape-nav">
+          <a class="bouton bouton-clair" href="#etape-4"><span aria-hidden="true">←</span> Étape précédente</a>
+          <a class="bouton" href="#etape-6">Étape suivante : Mettre en route le serveur (Render) <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+      <section class="etape" id="etape-6" aria-labelledby="titre-etape-6">
+        <p class="etape-compteur">Étape 6 sur 11</p>
+        <progress class="etape-progression" max="11" value="6" aria-hidden="true"></progress>
+        <h2 id="titre-etape-6" tabindex="-1">Mettre en route le serveur (Render)</h2>
+        <p class="etape-but"><strong>Le but :</strong> Render fera tourner le serveur de l’application : notifications, assistante MEL, météo, administration.</p>
+        <p class="encadre encadre-attention">L’offre gratuite de Render met le serveur en veille après un moment sans visite : le premier affichage peut alors prendre une minute. Voir les <a href="https://github.com/mairie-mezieres/app-mezieres/blob/main/docs/DEPLOIEMENT.md#4-coûts">coûts</a>.</p>
+        <h3>À faire</h3>
+        <ol class="etape-actions">
+          <li>Créez un compte sur <a href="https://dashboard.render.com">dashboard.render.com</a> et reliez-le à votre compte GitHub.</li>
+          <li>Choisissez <strong>New +</strong> puis <strong>Blueprint</strong>, et sélectionnez votre copie du dépôt <em>chatbot-mairie-mezieres</em>.</li>
+          <li>Render affiche une liste de cases à remplir. Remplissez au minimum : <code>ADMIN_PASSWORD</code> (un mot de passe que vous choisissez pour l’administration), les deux informations d’Upstash (étape 4) et les deux clés de notification (étape 5). Laissez vides les autres.</li>
+          <li>Validez. Une fois le service démarré, notez son <strong>adresse</strong>, qui se termine par <em>.onrender.com</em>.</li>
+        </ol>
+        <p class="encadre"><strong>À noter dans le <a href="#carnet">carnet</a> :</strong> Render : adresse utilisée, date. L’adresse du serveur (.onrender.com). Cocher ADMIN_PASSWORD.</p>
+        <figure class="emplacement est-masque" data-fichier="assets/img/captures/etape-06.webp" data-alt="Capture d’écran de l’étape 6 : Mettre en route le serveur (Render)"></figure>
+        <p><a class="lien-fort" href="https://github.com/mairie-mezieres/app-mezieres/blob/main/docs/DEPLOIEMENT.md#b-backend-sur-render-déploiement--1-clic-">Le détail technique : Serveur sur Render (guide de déploiement, section 5.B)</a></p>
+        <div class="etape-nav">
+          <a class="bouton bouton-clair" href="#etape-5"><span aria-hidden="true">←</span> Étape précédente</a>
+          <a class="bouton" href="#etape-7">Étape suivante : Publier l’application (GitHub Pages) <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+      <section class="etape" id="etape-7" aria-labelledby="titre-etape-7">
+        <p class="etape-compteur">Étape 7 sur 11</p>
+        <progress class="etape-progression" max="11" value="7" aria-hidden="true"></progress>
+        <h2 id="titre-etape-7" tabindex="-1">Publier l’application (GitHub Pages)</h2>
+        <p class="etape-but"><strong>Le but :</strong> Rendre l’application visible sur internet, à une adresse que les habitants pourront ouvrir.</p>
+        <h3>À faire</h3>
+        <ol class="etape-actions">
+          <li>Dans votre copie du dépôt <em>app-mezieres</em> sur GitHub, ouvrez <strong>Settings</strong>, puis <strong>Pages</strong>.</li>
+          <li>Dans <em>Build and deployment</em>, choisissez la source <strong>Deploy from a branch</strong>, la branche <strong>main</strong> et le dossier <strong>/ (root)</strong>, puis enregistrez.</li>
+          <li>Après quelques minutes, GitHub affiche l’adresse de votre application.</li>
+        </ol>
+        <p class="encadre"><strong>À noter dans le <a href="#carnet">carnet</a> :</strong> L’adresse de l’application.</p>
+        <figure class="emplacement est-masque" data-fichier="assets/img/captures/etape-07.webp" data-alt="Capture d’écran de l’étape 7 : Publier l’application (GitHub Pages)"></figure>
+        <p><a class="lien-fort" href="https://github.com/mairie-mezieres/app-mezieres/blob/main/docs/DEPLOIEMENT.md#e-frontend-sur-github-pages">Le détail technique : Publication sur GitHub Pages (guide de déploiement, section 5.E)</a></p>
+        <div class="etape-nav">
+          <a class="bouton bouton-clair" href="#etape-6"><span aria-hidden="true">←</span> Étape précédente</a>
+          <a class="bouton" href="#etape-8">Étape suivante : Relier l’application à votre serveur <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+      <section class="etape" id="etape-8" aria-labelledby="titre-etape-8">
+        <p class="etape-compteur">Étape 8 sur 11</p>
+        <progress class="etape-progression" max="11" value="8" aria-hidden="true"></progress>
+        <h2 id="titre-etape-8" tabindex="-1">Relier l’application à votre serveur</h2>
+        <p class="etape-but"><strong>Le but :</strong> Dire à votre application de parler à VOTRE serveur, et non à celui de Mézières.</p>
+        <p class="encadre">Ne modifiez que ce que le guide de déploiement indique : une virgule ou un guillemet effacé par erreur suffit à bloquer l’application. En cas de doute, demandez dans l’<a href="entraide.html">entraide</a> avant de valider.</p>
+        <h3>À faire</h3>
+        <ol class="etape-actions">
+          <li>C’est le seul moment où l’on modifie des fichiers. Le guide de déploiement liste <strong>chaque fichier</strong> à modifier et ce qu’il faut y mettre.</li>
+          <li>Sur GitHub, ouvrez le fichier indiqué, cliquez sur l’icône en forme de <strong>crayon</strong> (<em>Edit this file</em>), remplacez la valeur, puis cliquez sur <strong>Commit changes</strong>.</li>
+          <li>Recommencez pour chaque fichier de la liste. GitHub republie l’application tout seul après chaque modification.</li>
+        </ol>
+        <p class="encadre"><strong>À noter dans le <a href="#carnet">carnet</a> :</strong> Cocher, pour chaque fichier modifié, la ligne correspondante du tableau des clés.</p>
+        <figure class="emplacement est-masque" data-fichier="assets/img/captures/etape-08.webp" data-alt="Capture d’écran de l’étape 8 : Relier l’application à votre serveur"></figure>
+        <p><a class="lien-fort" href="https://github.com/mairie-mezieres/app-mezieres/blob/main/docs/DEPLOIEMENT.md#f-brancher-le-front-sur-votre-back">Le détail technique : Relier l’application au serveur (guide de déploiement, section 5.F)</a></p>
+        <div class="etape-nav">
+          <a class="bouton bouton-clair" href="#etape-7"><span aria-hidden="true">←</span> Étape précédente</a>
+          <a class="bouton" href="#etape-9">Étape suivante : Vérifier que tout fonctionne <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+      <section class="etape" id="etape-9" aria-labelledby="titre-etape-9">
+        <p class="etape-compteur">Étape 9 sur 11</p>
+        <progress class="etape-progression" max="11" value="9" aria-hidden="true"></progress>
+        <h2 id="titre-etape-9" tabindex="-1">Vérifier que tout fonctionne</h2>
+        <p class="etape-but"><strong>Le but :</strong> S’assurer que le serveur répond et que l’application s’y connecte.</p>
+        <h3>À faire</h3>
+        <ol class="etape-actions">
+          <li>Ouvrez l’adresse de votre serveur suivie de <code>/health</code> : la page doit afficher <code>"status":"ok"</code>. Sinon, patientez une minute (réveil du serveur) et réessayez.</li>
+          <li>Ouvrez l’adresse de votre application, puis son administration avec le mot de passe choisi à l’étape 6.</li>
+          <li>Dans l’administration, l’onglet <strong>Diagnostic des services</strong> teste chaque service et signale les clés manquantes.</li>
+        </ol>
+        <figure class="emplacement est-masque" data-fichier="assets/img/captures/etape-09.webp" data-alt="Capture d’écran de l’étape 9 : Vérifier que tout fonctionne"></figure>
+        <p><a class="lien-fort" href="https://github.com/mairie-mezieres/app-mezieres/blob/main/docs/DEPLOIEMENT.md#8-vérification--dépannage">Le détail technique : Vérification et dépannage (guide de déploiement, section 8)</a></p>
+        <div class="etape-nav">
+          <a class="bouton bouton-clair" href="#etape-8"><span aria-hidden="true">←</span> Étape précédente</a>
+          <a class="bouton" href="#etape-10">Étape suivante : Adapter l’application à votre commune <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+      <section class="etape" id="etape-10" aria-labelledby="titre-etape-10">
+        <p class="etape-compteur">Étape 10 sur 11</p>
+        <progress class="etape-progression" max="11" value="10" aria-hidden="true"></progress>
+        <h2 id="titre-etape-10" tabindex="-1">Adapter l’application à votre commune</h2>
+        <p class="etape-but"><strong>Le but :</strong> Remplacer ce qui parle de Mézières-lez-Cléry par ce qui parle de chez vous.</p>
+        <h3>À faire</h3>
+        <ol class="etape-actions">
+          <li>Votre copie affiche encore les contenus de Mézières : élus, coordonnées de la mairie, informations locales, assistante MEL.</li>
+          <li>Le guide de déploiement liste ce qu’il faut adapter et où cela se trouve. Avancez une rubrique à la fois.</li>
+          <li>Avant de publier, faites relire par une deuxième personne : une information fausse sur une démarche coûte plus cher qu’une information absente.</li>
+        </ol>
+        <figure class="emplacement est-masque" data-fichier="assets/img/captures/etape-10.webp" data-alt="Capture d’écran de l’étape 10 : Adapter l’application à votre commune"></figure>
+        <p><a class="lien-fort" href="https://github.com/mairie-mezieres/app-mezieres/blob/main/docs/DEPLOIEMENT.md#9-personnaliser-pour-votre-commune">Le détail technique : Personnaliser pour votre commune (guide de déploiement, section 9)</a></p>
+        <div class="etape-nav">
+          <a class="bouton bouton-clair" href="#etape-9"><span aria-hidden="true">←</span> Étape précédente</a>
+          <a class="bouton" href="#etape-11">Étape suivante : Et après ? <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+      <section class="etape" id="etape-11" aria-labelledby="titre-etape-11">
+        <p class="etape-compteur">Étape 11 sur 11</p>
+        <progress class="etape-progression" max="11" value="11" aria-hidden="true"></progress>
+        <h2 id="titre-etape-11" tabindex="-1">Et après ?</h2>
+        <p class="etape-but"><strong>Le but :</strong> Faire vivre l’application, et ne pas rester seul.</p>
+        <h3>À faire</h3>
+        <ol class="etape-actions">
+          <li>Ajoutez les services optionnels quand vous êtes prêts : publication Facebook, photos, signalements, agenda, courriels.</li>
+          <li>Présentez votre commune dans l’<a href="entraide.html">entraide</a> : votre expérience aidera la suivante.</li>
+          <li>Faites-vous connaître par le formulaire <a href="rejoindre.html">Nous rejoindre</a>, et venez au <a href="webinaire.html">webinaire mensuel</a>.</li>
+        </ol>
+        <figure class="emplacement est-masque" data-fichier="assets/img/captures/etape-11.webp" data-alt="Capture d’écran de l’étape 11 : Et après ?"></figure>
+        <p><a class="lien-fort" href="https://github.com/mairie-mezieres/app-mezieres/blob/main/docs/DEPLOIEMENT.md#7-mini-guides-des-intégrations-optionnelles">Le détail technique : Services optionnels (guide de déploiement, section 7)</a></p>
+        <div class="etape-nav">
+          <a class="bouton bouton-clair" href="#etape-10"><span aria-hidden="true">←</span> Étape précédente</a>
+          <a class="bouton" href="#carnet">Voir le carnet de route</a>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <section class="section" id="carnet" aria-labelledby="titre-carnet">
+    <div class="conteneur">
+      <h2 id="titre-carnet">Carnet de route</h2>
+      <p>À imprimer et remplir au stylo, puis à ranger au secrétariat de mairie. Il dit <strong>qui</strong> a créé <strong>quoi</strong>, et <strong>où</strong> sont rangés les mots de passe.</p>
+      <p class="encadre encadre-danger"><strong>N’écrivez jamais ici un mot de passe ni la valeur d’une clé</strong> : seulement l’endroit où ils sont rangés.</p>
+      <div class="boutons pas-imprimer">
+        <button type="button" class="bouton" id="imprimer-carnet">Imprimer le carnet</button>
+      </div>
+      <h3 id="titre-comptes">Les comptes</h3>
+      <div class="tableau-defile" role="region" aria-labelledby="titre-comptes" tabindex="0">
+        <table class="carnet">
+          <thead>
+            <tr><th scope="col">Service</th><th scope="col">Adresse électronique utilisée</th><th scope="col">Créé le</th><th scope="col">Par</th><th scope="col">Où est rangé le mot de passe</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">GitHub (étape 2)</th><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row">Upstash (étape 4)</th><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row">Render (étape 6)</th><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row">Autre :</th><td></td><td></td><td></td><td></td></tr>
+            <tr><th scope="row">Autre :</th><td></td><td></td><td></td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3 id="titre-cles">Les clés (noms seulement)</h3>
+      <div class="tableau-defile" role="region" aria-labelledby="titre-cles" tabindex="0">
+        <table class="carnet">
+          <thead>
+            <tr><th scope="col">Nom</th><th scope="col">D’où elle vient</th><th scope="col">Où la recopier</th><th scope="col">Fait</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row"><code>UPSTASH_REDIS_REST_URL</code></th><td>Upstash, onglet REST API (étape 4)</td><td>Render (étape 6)</td><td>☐</td></tr>
+            <tr><th scope="row"><code>UPSTASH_REDIS_REST_TOKEN</code></th><td>Upstash, onglet REST API (étape 4)</td><td>Render (étape 6)</td><td>☐</td></tr>
+            <tr><th scope="row"><code>VAPID_PUBLIC_KEY</code></th><td>Commande de l’étape 5</td><td>Render (étape 6) et application (étape 8)</td><td>☐</td></tr>
+            <tr><th scope="row"><code>VAPID_PRIVATE_KEY</code></th><td>Commande de l’étape 5</td><td>Render seulement (étape 6)</td><td>☐</td></tr>
+            <tr><th scope="row"><code>ADMIN_PASSWORD</code></th><td>Vous le choisissez</td><td>Render (étape 6)</td><td>☐</td></tr>
+            <tr><th scope="row">Adresse du serveur (…onrender.com)</th><td>Render (étape 6)</td><td>Application (étape 8)</td><td>☐</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>La liste complète des clés, services optionnels compris, est tenue à jour dans le fichier <a href="https://github.com/mairie-mezieres/chatbot-mairie-mezieres/blob/main/.env.example">.env.example</a> du serveur.</p>
+    </div>
+  </section>
+</main>
+<footer class="pied">
+  <div class="conteneur">
+    <ul>
+      <li><a href="licence.html">Licence EUPL 1.2</a></li>
+      <li><a href="accessibilite.html">Accessibilité : non conforme</a></li>
+      <li><a href="https://github.com/mairie-mezieres/mat-communes">Code source de ce site</a></li>
+      <li><a href="https://mezieres-lez-clery.fr/">L’application MAT</a></li>
+    </ul>
+    <p>Site d’entraide proposé par la commune de Mézières-lez-Cléry (Loiret), lauréate du Territoria d’Or 2026.</p>
+  </div>
+</footer>
+</body>
+</html>
