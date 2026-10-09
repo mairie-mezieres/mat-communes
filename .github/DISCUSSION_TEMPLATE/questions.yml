@@ -1,0 +1,54 @@
+# Formulaire de la catégorie « Questions » des Discussions.
+# ⚠️ Le nom du fichier doit être le « slug » de la catégorie (questions) : à vérifier
+# dans l’adresse de la catégorie une fois créée (…/discussions/categories/questions).
+title: "[Question] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Merci de votre question ! Avant d’envoyer, deux rappels :
+        - **tout est public** : aucune donnée personnelle (téléphone, adresse, nom d’habitant) ;
+        - **jamais de clé ni de mot de passe**, même en partie, même dans une capture d’écran. Pour parler d’une clé, donnez son nom (ex. `UPSTASH_REDIS_REST_TOKEN`), jamais sa valeur.
+
+        Votre réponse est peut-être déjà dans les [questions fréquentes](https://mairie-mezieres.github.io/mat-communes/faq.html).
+  - type: input
+    id: commune
+    attributes:
+      label: Votre commune
+      description: Nom et département, par exemple « Saint-Exemple (45) ».
+    validations:
+      required: true
+  - type: dropdown
+    id: etape
+    attributes:
+      label: Où en êtes-vous ?
+      description: Les étapes sont celles du guide pas à pas.
+      options:
+        - Je découvre MAT
+        - "Étape 1 — Avant de commencer"
+        - "Étape 2 — Créer le compte GitHub"
+        - "Étape 3 — Copier les deux dépôts de MAT"
+        - "Étape 4 — Créer la base de données (Upstash)"
+        - "Étape 5 — Fabriquer les clés de notification"
+        - "Étape 6 — Mettre en route le serveur (Render)"
+        - "Étape 7 — Publier l’application (GitHub Pages)"
+        - "Étape 8 — Relier l’application à votre serveur"
+        - "Étape 9 — Vérifier que tout fonctionne"
+        - "Étape 10 — Adapter l’application à votre commune"
+        - Après la mise en ligne
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: Votre question
+      description: Ce que vous avez fait, ce que vous voyez à l’écran, ce que vous attendiez. Un message d’erreur se recopie tel quel.
+    validations:
+      required: true
+  - type: checkboxes
+    id: confidentialite
+    attributes:
+      label: Vérification
+      options:
+        - label: Mon message ne contient aucune clé, aucun mot de passe ni aucune donnée personnelle.
+          required: true
