@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Webinaire mensuel — MAT · entraide entre communes</title>
+<meta name="description" content="Une fois par mois, en visio : des réponses de vive voix aux questions des communes qui reprennent l’application MAT.">
+<meta name="theme-color" content="#1A3D2B">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/site.css">
+<script src="assets/js/commun.js" defer></script>
+<script src="assets/js/webinaire.js" defer></script>
+</head>
+<body>
+<a class="evitement" href="#contenu">Aller au contenu</a>
+<header class="entete">
+  <div class="conteneur">
+    <div class="entete-haut">
+      <a class="marque" href="index.html"><span class="marque-logo" aria-hidden="true">MAT</span><span>MAT · entraide <span class="marque-sous">entre communes</span></span></a>
+    </div>
+    <nav class="nav-principale" aria-label="Menu principal">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="guide.html">Répliquer MAT</a></li>
+        <li><a href="faq.html">Questions fréquentes</a></li>
+        <li><a href="entraide.html">Entraide</a></li>
+        <li><a href="webinaire.html" aria-current="page">Webinaire</a></li>
+        <li><a href="rejoindre.html">Nous rejoindre</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="contenu" tabindex="-1">
+  <section class="entete-page">
+    <div class="conteneur">
+      <h1>Le webinaire mensuel</h1>
+      <p class="chapo">Une fois par mois, en visio : l’équipe de Mézières-lez-Cléry et les communes ambassadrices répondent de vive voix aux questions des communes qui se lancent.</p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="titre-prochain">
+    <div class="conteneur">
+      <div class="carte lisere-fetes webinaire-carte">
+        <h2 id="titre-prochain">Prochaine séance</h2>
+        <p id="webi-aucun">La prochaine date sera annoncée ici, et dans les <a href="https://github.com/mairie-mezieres/mat-communes/discussions/categories/annonces">annonces de l’entraide</a>.</p>
+        <div id="webi-detail" class="est-masque">
+          <p class="webi-date" id="webi-date"></p>
+          <p id="webi-encours" class="webi-encours est-masque">La séance a commencé : vous pouvez encore la rejoindre.</p>
+          <p id="webi-duree"></p>
+          <p id="webi-sujet" class="est-masque"></p>
+          <div class="boutons" id="webi-boutons"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="titre-deroule">
+    <div class="conteneur grille grille-2">
+      <div class="carte lisere-communication">
+        <h2 id="titre-deroule">Comment cela se passe</h2>
+        <ul>
+          <li>Il suffit d’un ordinateur ou d’une tablette, avec le son, et d’une connexion internet.</li>
+          <li>Le lien pour rejoindre la séance est publié sur cette page le moment venu.</li>
+          <li>Vous pouvez poser vos questions, ou simplement écouter.</li>
+        </ul>
+      </div>
+      <div class="carte lisere-feuille">
+        <h2 id="titre-preparer">Préparer vos questions</h2>
+        <p>Déposez-les à l’avance dans l’entraide : elles seront traitées en priorité, et la réponse restera écrite pour les communes qui n’auront pas pu venir.</p>
+        <p><a class="lien-fort" href="https://github.com/mairie-mezieres/mat-communes/discussions/categories/questions">Déposer une question</a></p>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="pied">
+  <div class="conteneur">
+    <ul>
+      <li><a href="licence.html">Licence EUPL 1.2</a></li>
+      <li><a href="accessibilite.html">Accessibilité : non conforme</a></li>
+      <li><a href="https://github.com/mairie-mezieres/mat-communes">Code source de ce site</a></li>
+      <li><a href="https://mezieres-lez-clery.fr/">L’application MAT</a></li>
+    </ul>
+    <p>Site d’entraide proposé par la commune de Mézières-lez-Cléry (Loiret), lauréate du Territoria d’Or 2026.</p>
+  </div>
+</footer>
+</body>
+</html>
